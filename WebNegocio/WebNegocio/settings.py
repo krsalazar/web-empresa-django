@@ -25,7 +25,7 @@ SECRET_KEY = 'q(g63ohwc#i5ugrfmhl5*t%5e#(**-@=vhn%gy7%x)3s)2cnew'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['webshucos.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'WebNegocio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,6 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 #media files
 MEDIA_URL = '/media/'
@@ -145,7 +148,9 @@ CKEDITOR_CONFIGS = {
 }
 
 #Configuración e-mail
-EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = 'c65902100d4af7'
-EMAIL_HOST_PASSWORD = '3b4961be351f68'
-EMAIL_PORT = '2525'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'correo@gmail.com'
+EMAIL_HOST_PASSWORD = 'unacontraseña123'
